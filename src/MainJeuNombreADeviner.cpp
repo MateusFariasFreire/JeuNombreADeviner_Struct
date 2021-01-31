@@ -10,13 +10,30 @@
 // Historique du fichier:
 /*************************************************/
 #include <iostream>
+#include <string>
 using namespace std;
 
 #include "../include/JeuNombreADeviner.h"
 
 int main()
 {
-    cout << "Vous allez jouer pour deviner un nombre secret" << endl;
+
+    int wannaPlay = 0;
+    int nbAdeviner = 0;
+    TJoueur joueur;
+    string nomJoueur;
+
+    cout << "Vous allez jouer pour deviner un nombre secret\n";
+
+    do{
+        nbAdeviner = TirerNombreMystere();
+        cout << "Saisir le nom du joueur : ";
+        cin >> nomJoueur;
+        InitJoueur(joueur, nomJoueur);
+        cout << joueur.nom;
+        cout << "Voulez-vous rejouer ?\n1 = OUI  2 = NON\n";
+        cin >> wannaPlay;
+    }while(wannaPlay == 1);
 
     return 0;
 }

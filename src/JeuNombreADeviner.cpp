@@ -11,19 +11,20 @@
 // Historique du fichier:
 /*************************************************/
 #include <iostream>
+#include <time.h>
 using namespace std;
 #include "../include/JeuNombreAdeviner.h"
 
 // Nom :InitJoueur
 // Rôle : Crée un joueur. Initialise toutes les informations du joueur.
 //        Le nombre de tentatives, de parties gagnées et de parties jouées seront à 0.
-// Paramètres d'entrée :
-// Paramètres de sortie :
-// Paramètres d'entrée/sortie :
+// Paramètres d'entrée : nom du joueur à créer
+// Paramètres d'entrée/sortie : joueur à créer
 
 void InitJoueur(TJoueur& joueurAcreer, string un_nom)
 {
-    //A COMPLETER
+    joueurAcreer = {un_nom, 0, 0, 0};
+
 }
 
 
@@ -33,46 +34,71 @@ void InitJoueur(TJoueur& joueurAcreer, string un_nom)
 
 int TirerNombreMystere()
 {
-    //A COMPLETER
-        return -1;
+    srand(time(NULL));
+    return rand()%11;
 }
 
 
 // Nom :JouerPartie
 // Rôle : Fait jouer une partie au joueur passé en paramètre
 //        A la fin, met à jour les informations du joueur
-// Paramètres d'entrée:
-// Paramètres de sortie:
-// Paramètres d'entrée/sortie :
+// Paramètres d'entrée: nombre à deviner
+// Paramètres d'entrée/sortie : joueur
 
 void JouerPartie(TJoueur& un_joueur, int nombreADeviner)
 {
-    //A COMPLETER
+    int nbSaisi;
+    int nbEssais = 0;
+    bool gagne;
+
+    do{
+        cin >> nbSaisi;
+        if(nbSaisi > nombreADeviner){
+            cout << "C'est moins\n";
+        }else if(nbSaisi < nombreADeviner){
+            cout << "C'est plus\n";
+        }
+        nbEssais ++;
+    }while(nbSaisi != nombreADeviner && nbEssais < 4);
+
+    if(nbSaisi == nombreADeviner){
+        gagne = true;
+    }else{
+        gagne = false;
+    }
+
+    MajResultatsJoueur(un_joueur, nbEssais, gagne);
 }
 
 
 // Nom : MajResultatsJoueur
 // Rôle : met à jour les informations du joueur passé en paramètre
-// Paramètres d'entrée:
-// Paramètres de sortie:
-// Paramètres d'entrée/sortie :
+// Paramètres d'entrée: joueur / nombre d'essais / victoire ou non du joueur
+// Paramètres d'entrée/sortie : joueur
 
-void MajResultatsJoueur(TJoueur joueur, int nbEssais, bool gagne)
+void MajResultatsJoueur(TJoueur & joueur, int nbEssais, bool gagne)
 {
-   // A COMPLETER
+    if(gagne != false){
+        joueur.nbPartiesGagnees++;
+    }
+    joueur.nbPartiesJouees++;
+    joueur.nbTentatives += nbEssais;
+
 }
 
 // Nom : ResultatsJoueur
 // Rôle : indique les résultats du joueur passé en paramètre
 //        le nombre de parties gagnées, le nombre de parties perdues, le nombre d'essais total
 //        La fonction N'affiche PAS les informations à l'écran
-// Paramètres d'entrée:
-// Paramètres de sortie:
-// Paramètres d'entrée/sortie :
+// Paramètres d'entrée: joueur
+// Paramètres de sortie: aucun
+// Paramètres d'entrée/sortie : nbsucces / nbechec / nbessais
 
-void ResultatsJoueur(TJoueur joueur, int& nbsucces, int& nbechec, int& nbessais)
+void ResultatsJoueur(TJoueur joueur, int & nbsucces, int & nbechec, int & nbessais)
 {
-    // A COMPLETER
+    nbsucces = joueur.nbPartiesGagnees;
+    nbechec = joueur.nbPartiesJouees - nbsucces;
+    nbessais = joueur.nbTentatives;
 }
 
 // Nom :Nom
