@@ -74,4 +74,5 @@ void ResultatsJoueur(TJoueur joueur, int & nbsucces, int & nbechec, int & nbessa
 
 string Nom(TJoueur joueur);
 
+void AfficherResultats(TJoueur joueur);
 
