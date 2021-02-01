@@ -12,6 +12,7 @@
 /*************************************************/
 #include <iostream>
 #include <time.h>
+#include <windows.h>
 using namespace std;
 #include "../include/JeuNombreAdeviner.h"
 
@@ -54,17 +55,21 @@ void JouerPartie(TJoueur& un_joueur, int nombreADeviner)
     do{
         cin >> nbSaisi;
         if(nbSaisi > nombreADeviner){
-            cout << "C'est moins\n";
+            cout << "\nC'est moins\n";
         }else if(nbSaisi < nombreADeviner){
-            cout << "C'est plus\n";
+            cout << "\nC'est plus\n";
         }
         nbEssais ++;
     }while(nbSaisi != nombreADeviner && nbEssais < 4);
 
     if(nbSaisi == nombreADeviner){
         gagne = true;
+        cout << "\nC'est gagne!\n";
+        Sleep(500);
     }else{
         gagne = false;
+        cout << "\nC'est perdu!";
+        Sleep(500);
     }
 
     MajResultatsJoueur(un_joueur, nbEssais, gagne);
@@ -83,7 +88,6 @@ void MajResultatsJoueur(TJoueur & joueur, int nbEssais, bool gagne)
     }
     joueur.nbPartiesJouees++;
     joueur.nbTentatives += nbEssais;
-
 }
 
 // Nom : ResultatsJoueur
@@ -109,5 +113,15 @@ void ResultatsJoueur(TJoueur joueur, int & nbsucces, int & nbechec, int & nbessa
 string Nom(TJoueur joueur){
 
     return joueur.nom;
+
+}
+
+void AfficherResultats(TJoueur joueur){
+    cout << "\n***********************************************\n";
+    cout << "\nStats du joueur : " << joueur.nom << endl << endl;
+    cout << "Parties gagnees : " << joueur.nbPartiesGagnees << endl;
+    cout << "Parties jouees : " << joueur.nbPartiesJouees << endl;
+    cout << "Nombre de tentatives : " << joueur.nbTentatives <<endl;
+    cout << "\n***********************************************\n";
 }
 
