@@ -35,3 +35,17 @@
 	<windows.h>
 	"../include/JeuNombreAdeviner.h"
 
+1612196372 source:c:\users\mateu\downloads\jeunombreadeviner_struct-dev\src\jeunombreadeviner.cpp
+	<iostream>
+	<time.h>
+	<windows.h>
+	"../include/JeuNombreAdeviner.h"
+
+1612196372 c:\users\mateu\downloads\jeunombreadeviner_struct-dev\include\jeunombreadeviner.h
+	<string>
+
+1612196372 source:c:\users\mateu\downloads\jeunombreadeviner_struct-dev\src\mainjeunombreadeviner.cpp
+	<iostream>
+	<string>
+	"../include/JeuNombreADeviner.h"
+
