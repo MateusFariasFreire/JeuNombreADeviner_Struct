@@ -2,7 +2,7 @@
 // Nom du projet: Jeu du nombre à deviner
 // Nom du fichier: MainJeuNombreAdeviner.cpp
 // Version : 1.0
-// Nom du programmeur: MP Pinaud
+// Nom du programmeur: Mateus FARIAS FREIRE
 // Date de création : 25/01/2021
 // Rôle du fichier: Contient le code jeu
 // Nom des composants utilises: JeuNombreADeviner.h
