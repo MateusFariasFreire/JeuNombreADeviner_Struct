@@ -74,5 +74,9 @@ void ResultatsJoueur(TJoueur joueur, int & nbsucces, int & nbechec, int & nbessa
 
 string Nom(TJoueur joueur);
 
+// Nom : AfficherResultats
+// Rôle : Afficher les résultats du joueur
+// Paramètres d'entrée: le joueur dont on veut les stats
+
 void AfficherResultats(TJoueur joueur);
 
